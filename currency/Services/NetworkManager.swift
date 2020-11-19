@@ -29,18 +29,14 @@ struct NetworkManager {
                 print("HTTP status code: \(httpResponse.statusCode)")
             }
             
-            
             guard let data = data else { return }
-            
-            print("data", data)
             
             do {
                 let currency = try JSONDecoder().decode(CurrenciesList.self, from: data)
                 
-                
                 completionHangler(currency)
             } catch let error {
-                print("test", error)
+                print(error)
             }
         }.resume()
     }
